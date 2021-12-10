@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <link rel="shortcut icon" type="image/jpg" href="./images/logo.png"/>
+    <!--Imports-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <script type="text/javascript" src="js/home.js"></script>
+    <link rel="stylesheet" type="text/css" href="/style/home.css" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="main-body">
+
+            <!-- Breadcrumb -->
+            <nav aria-label="breadcrumb" class="main-breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">User Profile</li>
+                </ol>
+            </nav>
+            <!-- /Breadcrumb -->
+            <div class="row gutters-sm">
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex flex-column align-items-center text-center">
+                                <img src="/images/user_logo.png" alt="Admin" class="rounded-circle" width="150">
+                                <div class="mt-3">
+                                    <h4 id="name">name</h4>
+                                    <h4><span id="type" class="badge badge-warning">type</span></h4>
+                                    <p id="email" class="text-muted font-size-sm">email</p>
+                                    <button id="editarPerfil" class="btn btn-outline-primary">Editar Perfil</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal para el formulario registrar-->
+    <form>
+        <div class="modal fade" id="modalRegistro" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="tituloModalRegistro">Registrar Usuario</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-sm-12 col-lg-6">
+                                <label for="name" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" id="nameModal" placeholder="Nombre"
+                                    autocomplete="off">
+                            </div>
+                            <div class="col-sm-12 col-lg-6">
+                                <label for="name" class="form-label">Identificación</label>
+                                <input type="text" class="form-control" id="identModal" placeholder="Identificación"
+                                    autocomplete="off">
+                            </div>
+                            <div class="col-sm-12 col-lg-6">
+                                <label for="name" class="form-label">Dirección</label>
+                                <input type="text" class="form-control" id="addressModal" placeholder="Dirección"
+                                    autocomplete="off">
+                            </div>
+                            <div class="col-sm-12 col-lg-6">
+                                <label for="name" class="form-label">Teléfono</label>
+                                <input type="number" class="form-control" id="cellphoneModal" placeholder="Teléfono"
+                                    autocomplete="off">
+                            </div>
+                            <div class="col-sm-12 col-lg-6">
+                                <label for="name" class="form-label">Zona</label>
+                                <input type="text" class="form-control" id="zonaModal" placeholder="Zona"
+                                    autocomplete="off">
+                            </div>
+                            <div class="col-sm-12 col-lg-6">
+                                <label for="name" class="form-label">Tipo</label>
+                                <select class="form-control category-select" id="tipoModal">
+                                    <option>ASESOR</option>
+                                    <option>COORD</option>
+                                    <option>ADMIN</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-12 col-lg-6">
+                                <label for="name" class="form-label">Email</label>
+                                <input type="text" class="form-control" id="emailModal" placeholder="Email"
+                                    autocomplete="off">
+                            </div>
+                            <div class="col-sm-12 col-lg-6">
+                                <label for="name" class="form-label">Contraseña</label>
+                                <input type="password" class="form-control" id="passwordModal" placeholder="Contraseña"
+                                    autocomplete="off">
+                            </div>
+                            <div class="col-sm-12 col-lg-6" id="confPasswordDiv">
+                                <label for="name" class="form-label">Confirmar Contraseña</label>
+                                <input type="password" class="form-control" placeholder="Contraseña"
+                                    id="confPasswordModal" autocomplete="off">
+                            </div>
+                            <div>
+                                <label id="idModal" hidden></label>
+                                <label id="hEmailModal" hidden></label>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="editarDatos" type="submit" class="btn btn-primary">Guardar</button>
+                        <button id="cancelarEditar" type="button" class="btn btn-secondary"
+                            onclick="cerrarModal()">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <!-- fin del modal de formulario -->
+    <!-- modal de mensaje de confirmacion -->
+    <div class="modal fade" id="modalMensaje" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="tituloModalMensaje">TituloMensaje</h5>
+                </div>
+                <div class="modal-body">
+                    <p id="mensaje">
+
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button id="botonCancelar" type="button" class="btn btn-secondary"
+                        onclick="cerrarModalMensaje()">Ok!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- fin del modal de mensaje de confirmacion -->
+    <!--Imports-->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
